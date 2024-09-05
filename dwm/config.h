@@ -65,6 +65,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,	   SHCMD("wezterm")              },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("j4-dmenu-desktop")     },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("dmenu_run")            },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenuemoji")           },
 	// wm
 	TAGKEYS(                        XK_1,                      0                             )
 	TAGKEYS(                        XK_2,                      1                             )
