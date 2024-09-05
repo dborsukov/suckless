@@ -61,11 +61,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG}		 },
 static const Key keys[] = {
 	/* modifier                     key        function        argument                      */
-	// spawn
-	{ MODKEY,                       XK_Return, spawn,	   SHCMD("wezterm")              },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("j4-dmenu-desktop")     },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("dmenu_run")            },
-	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenuemoji")           },
 	// wm
 	TAGKEYS(                        XK_1,                      0                             )
 	TAGKEYS(                        XK_2,                      1                             )
@@ -100,12 +95,20 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 }                    },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 }                    },
 	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0}                           },
+	// spawn
+	{ MODKEY,                       XK_Return, spawn,	   SHCMD("wezterm")              },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("j4-dmenu-desktop")     },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("dmenu_run")            },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenuemoji")           },
+	{ 0,				XK_Print,  spawn,          SHCMD("maim ss-full-$(date '+%Y%m%d-%H%M-%S').png") },
+	{ ShiftMask,			XK_Print,  spawn,          SHCMD("maimpick") },
 	// sound
 	{ MODKEY,                       XK_minus,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%-; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_minus,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_equal,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_equal,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,                       XK_BackSpace,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)")     },
+	{ MODKEY,                       XK_BackSpace,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,             XK_BackSpace,   spawn,     SHCMD("wezterm -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 };
 
 /* button definitions */
