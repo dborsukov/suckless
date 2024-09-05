@@ -34,7 +34,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact        = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
@@ -62,15 +62,12 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
-static const char *cmd_term[]  = { "wezterm", NULL };
-static const char *cmd_rofi[] = { "rofi", "-show", "drun", NULL };
-
 static const Key keys[] = {
 	/* modifier                     key        function        argument                      */
 	// spawn
-	{ MODKEY,                       XK_Return, spawn,          {.v = cmd_term }              },
-	{ MODKEY,                       XK_p,      spawn,          {.v = cmd_rofi }              },
+	{ MODKEY,                       XK_Return, spawn,	   SHCMD("wezterm")              },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -show drun")      },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("rofi -show run")       },
 	// wm
 	{ MODKEY,                       XK_b,      togglebar,      {0}                           },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 }                    },
@@ -110,7 +107,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_equal,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,             XK_equal,       spawn,     SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,                       XK_BackSpace,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_BackSpace,   spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)")     },
 };
 
 /* button definitions */
