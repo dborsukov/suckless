@@ -66,8 +66,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument                      */
 	// spawn
 	{ MODKEY,                       XK_Return, spawn,	   SHCMD("wezterm")              },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("rofi -show drun")      },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("rofi -show run")       },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("j4-dmenu-desktop")     },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("dmenu_run")            },
 	// wm
 	{ MODKEY,                       XK_b,      togglebar,      {0}                           },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 }                    },
